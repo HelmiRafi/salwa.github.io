@@ -1,0 +1,67 @@
+Additional
+Atur Password
+system - password
+Atur identity
+system - identity
+
+IP Ether 1 -> Otomatis (DHCP Client)
+IP -> DHCP Client -> Add ->
+	pilih interface : ether1 -> ok
+
+IP Ether 2 -> 
+IP -> Address -> Add ->
+	pilih interface : ether2
+	address : 
+
+Menyamarkan IP sumber (agar client bisa konek ke internet)
+IP -> firewall -> Nat -> Add
+	chain : srcnat
+	out-interface : ether1
+	action : masqurade -> ok
+
+Atur DNS Server Router 
+IP -> DNS -> centang Allow remote request
+
+DHCP server
+ip- dhcp server - dhcp setup- ether 2-next
+
+aktifkan wireles
+Wireless -> wlan1 -> enable
+
+SSID
+Wireless -> double click wlan1 -> tab Wireless
+	Mode -> Ap bridge
+	SSID ->
+
+IP wlan1 
+IP -> Address -> Add ->
+	pilih interface : wlan1
+	address : 
+
+Setting Hotspot
+IP -> Hotspot -> Hotspot Setup
+	hotspot interface : wlan1 -> next
+	Local Addres -> Default
+	Address Pool -> 
+	certificate -> none -> next
+	SMTP -> biarkan -> next
+	DNS Server -> .... (IP wlan1) -> next
+	DNS Name ->  
+	Name of local -> guest
+	Password for the User -> 12345 -> next
+
+Share User (satu akun bisa digunakan 5 user)
+IP -> Hostspot -> User Profile
+	double click default 
+	shared user : 5 -> ok
+
+Hapus Cookie (agar user bisa login dengan harus memasukan password kembali)
+IP -> Hotspot -> Server Profile
+	double click hsprof1
+	pilih tab login
+	hapus centang Cookie -> ok
+
+DNS Static :
+IP -> DNS -> Static -> Add
+	name : webukksij.net
+	Address : seesuaikan dengan webserver
